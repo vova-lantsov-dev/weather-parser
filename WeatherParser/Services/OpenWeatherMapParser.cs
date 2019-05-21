@@ -10,19 +10,17 @@ using WeatherParser.Utils;
 
 namespace WeatherParser.Services
 {
-    class OpenWeatherMapParser : IWeatherParser
+    internal sealed class OpenWeatherMapParser : IWeatherParser
     {
         private readonly string _apiUrl;
         private readonly string _apiKey;
 
-        private Logger _logger;
+        private readonly Logger _logger = new Logger();
 
         public OpenWeatherMapParser(string apiUrl, string apiKey)
         {
             _apiUrl = apiUrl;
             _apiKey = apiKey;
-
-            _logger = new Logger();
         }
 
         public async Task<WeatherResult> Parse(string cityName)
@@ -40,13 +38,12 @@ namespace WeatherParser.Services
 
                     _logger.WriteLog("Begin request to OpenWeatherMap Api");
                     var httpResponse = await httpClient.GetAsync(apiRequestUrl);
-                    _logger.WriteLog($"Response from OpenWeatherMap Api received. Http Code: {httpResponse?.StatusCode.ToString()}");
+                    _logger.WriteLog($"Response from OpenWeatherMap Api received. Http Code: {httpResponse?.StatusCode}");
 
                     var responseJson = await httpResponse.Content.ReadAsStringAsync();
                     _logger.WriteLog($"Response from OpenWeatherMap: {responseJson}");
 
-                    var parsedResponse =
-                        JsonConvert.DeserializeObject<OpenWeatherMapResponse>(responseJson);
+                    var parsedResponse = JsonConvert.DeserializeObject<OpenWeatherMapResponse>(responseJson);
 
                     return MapResponseToWeatherResult(parsedResponse);
                 }
@@ -71,11 +68,11 @@ namespace WeatherParser.Services
 
         private WeatherResult MapResponseToWeatherResult(OpenWeatherMapResponse response)
         {
-            return new WeatherResult(
-                response.WeatherDescription.FirstOrDefault().Title,
-                response.WeatherDescription.FirstOrDefault().FullDescription,
-                (int)Math.Round(UnitsConverter.ConvertTemperatureKelvinToCelsius((double)response.WeatherGeneralInformation.Temperature), 0),
-                response.WeatherGeneralInformation.Pressure
+            return response == null ? null : new WeatherResult(
+                response.WeatherDescription?.FirstOrDefault()?.Title,
+                response.WeatherDescription?.FirstOrDefault()?.FullDescription,
+                (int)Math.Round(UnitsConverter.ConvertTemperatureKelvinToCelsius((double)(response.WeatherGeneralInformation?.Temperature ?? 0M)), 0),
+                response.WeatherGeneralInformation?.Pressure ?? 0
             );
         }
     }
