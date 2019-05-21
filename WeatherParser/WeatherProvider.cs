@@ -6,18 +6,16 @@ using WeatherParser.Services;
 
 namespace WeatherParser
 {
-    class WeatherProvider
+    internal sealed class WeatherProvider
     {
         private IWeatherParser WeatherParser { get; }
-        private Logger _logger;
+        private readonly Logger _logger = new Logger();
 
         public WeatherProvider()
         {
             WeatherParser = new OpenWeatherMapParser(
                 ConfigurationManager.AppSettings["OpenWeatherMapApiUrl"],
                 ConfigurationManager.AppSettings["OpenWeatherMapApiId"]);
-
-            _logger = new Logger();
         }
 
         public async Task<string> GetWeatherForCity(string cityName)
@@ -27,7 +25,8 @@ namespace WeatherParser
                 _logger.WriteLog($"Begin getting weather for {cityName}");
 
                 var result = await WeatherParser.Parse(cityName).ConfigureAwait(false);
-                var formattedResult =
+                var formattedResult = result == null ?
+                    "Result equals to null." :
                     $"Current weather in {cityName}: {result.Title} ({result.Description}) - {result.TemperatureCelsius} C*, Pressure: {result.Pressure}";
 
                 _logger.WriteLog($"Weather for {cityName} is gotten");

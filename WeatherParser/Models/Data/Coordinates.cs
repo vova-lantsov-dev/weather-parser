@@ -2,7 +2,7 @@
 
 namespace WeatherParser.Models
 {
-    class Coordinates
+    internal sealed class Coordinates
     {
         [JsonProperty("lon")]
         public decimal Longitude { get; set; }

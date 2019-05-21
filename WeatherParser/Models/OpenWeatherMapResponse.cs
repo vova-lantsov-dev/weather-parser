@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace WeatherParser.Models
 {
-    class OpenWeatherMapResponse
+    internal sealed class OpenWeatherMapResponse
     {
         [JsonProperty("coord")]
         public Coordinates Coordinates { get; set; }

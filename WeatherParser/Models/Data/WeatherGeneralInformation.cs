@@ -2,7 +2,7 @@
 
 namespace WeatherParser.Models
 {
-    class WeatherGeneralInformation
+    internal sealed class WeatherGeneralInformation
     {
         [JsonProperty("temp")]
         public decimal Temperature { get; set; }

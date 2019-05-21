@@ -2,7 +2,7 @@
 
 namespace WeatherParser.Models
 {
-    class WeatherDescription
+    internal sealed class WeatherDescription
     {
         [JsonProperty("main")]
         public string Title { get; set; }
