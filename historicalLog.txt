@@ -1,0 +1,582 @@
+> 4/9/2019 2:39:12 PM > Application started
+
+> 4/9/2019 2:39:12 PM > Begin getting weather for Afghanistan
+
+> 4/9/2019 2:39:12 PM > Begin request to OpenWeatherMap Api
+
+> 4/9/2019 2:39:13 PM > Response from OpenWeatherMap Api received. Http Code: OK
+
+> 4/9/2019 2:39:13 PM > Response from OpenWeatherMap: {"coord":{"lon":-0.13,"lat":51.51},"weather":[{"id":300,"main":"Drizzle","description":"light intensity drizzle","icon":"09d"}],"base":"stations","main":{"temp":280.32,"pressure":1012,"humidity":81,"temp_min":279.15,"temp_max":281.15},"visibility":10000,"wind":{"speed":4.1,"deg":80},"clouds":{"all":90},"dt":1485789600,"sys":{"type":1,"id":5091,"message":0.0103,"country":"GB","sunrise":1485762037,"sunset":1485794875},"id":2643743,"name":"London","cod":200}
+
+> 4/9/2019 2:39:13 PM > Weather for Afghanistan is gotten
+
+> 4/9/2019 2:39:23 PM > Begin getting weather for Albania
+
+> 4/9/2019 2:39:23 PM > Begin request to OpenWeatherMap Api
+
+> 4/9/2019 2:39:23 PM > Response from OpenWeatherMap Api received. Http Code: OK
+
+> 4/9/2019 2:39:23 PM > Response from OpenWeatherMap: {"coord":{"lon":-0.13,"lat":51.51},"weather":[{"id":300,"main":"Drizzle","description":"light intensity drizzle","icon":"09d"}],"base":"stations","main":{"temp":280.32,"pressure":1012,"humidity":81,"temp_min":279.15,"temp_max":281.15},"visibility":10000,"wind":{"speed":4.1,"deg":80},"clouds":{"all":90},"dt":1485789600,"sys":{"type":1,"id":5091,"message":0.0103,"country":"GB","sunrise":1485762037,"sunset":1485794875},"id":2643743,"name":"London","cod":200}
+
+> 4/9/2019 2:39:23 PM > Weather for Albania is gotten
+
+> 4/9/2019 2:39:33 PM > Begin getting weather for Algeria
+
+> 4/9/2019 2:39:33 PM > Begin request to OpenWeatherMap Api
+
+> 4/9/2019 2:39:33 PM > Response from OpenWeatherMap Api received. Http Code: OK
+
+> 4/9/2019 2:39:33 PM > Response from OpenWeatherMap: {"coord":{"lon":-0.13,"lat":51.51},"weather":[{"id":300,"main":"Drizzle","description":"light intensity drizzle","icon":"09d"}],"base":"stations","main":{"temp":280.32,"pressure":1012,"humidity":81,"temp_min":279.15,"temp_max":281.15},"visibility":10000,"wind":{"speed":4.1,"deg":80},"clouds":{"all":90},"dt":1485789600,"sys":{"type":1,"id":5091,"message":0.0103,"country":"GB","sunrise":1485762037,"sunset":1485794875},"id":2643743,"name":"London","cod":200}
+
+> 4/9/2019 2:39:33 PM > Weather for Algeria is gotten
+
+> 4/9/2019 2:39:43 PM > Begin getting weather for American Samoa
+
+> 4/9/2019 2:39:43 PM > Begin request to OpenWeatherMap Api
+
+> 4/9/2019 2:39:43 PM > Response from OpenWeatherMap Api received. Http Code: OK
+
+> 4/9/2019 2:39:43 PM > Response from OpenWeatherMap: {"coord":{"lon":-0.13,"lat":51.51},"weather":[{"id":300,"main":"Drizzle","description":"light intensity drizzle","icon":"09d"}],"base":"stations","main":{"temp":280.32,"pressure":1012,"humidity":81,"temp_min":279.15,"temp_max":281.15},"visibility":10000,"wind":{"speed":4.1,"deg":80},"clouds":{"all":90},"dt":1485789600,"sys":{"type":1,"id":5091,"message":0.0103,"country":"GB","sunrise":1485762037,"sunset":1485794875},"id":2643743,"name":"London","cod":200}
+
+> 4/9/2019 2:39:43 PM > Weather for American Samoa is gotten
+
+> 4/9/2019 2:39:49 PM > Begin getting weather for London
+
+> 4/9/2019 2:39:49 PM > Begin request to OpenWeatherMap Api
+
+> 4/9/2019 2:39:49 PM > Response from OpenWeatherMap Api received. Http Code: OK
+
+> 4/9/2019 2:39:49 PM > Response from OpenWeatherMap: {
+"coord": {
+"lon": -0.13,
+"lat": 51.51
+},
+"weather": [
+{
+"id": 300,
+"main": "Drizzle",
+"description": "light intensity drizzle",
+"icon": "09d"
+}
+],
+"base": "stations",
+"main": {
+"temp": 280.32,
+"pressure": 1012,
+"humidity": 81,
+"temp_min": 279.15,
+"temp_max": 281.15
+},
+"visibility": 10000,
+"wind": {
+"speed": 4.1,
+"deg": 80
+},
+"clouds": {
+"all": 90
+},
+"dt": 1485789600,
+"sys": {
+"type": 1,
+"id": 5091,
+"message": 0.0103,
+"country": "GB",
+"sunrise": 1485762037,
+"sunset": 1485794875
+},
+"id": 2643743,
+"name": "London",
+"cod": 200
+
+
+> 4/9/2019 2:39:50 PM > Unexpected end when deserializing object. Path 'cod', line 43, position 0.; 
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.ThrowUnexpectedEndException(JsonReader reader, JsonContract contract, Object currentObject, String message)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.PopulateObject(Object newObject, JsonReader reader, JsonObjectContract contract, JsonProperty member, String id)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.CreateObject(JsonReader reader, Type objectType, JsonContract contract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerMember, Object existingValue)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.CreateValueInternal(JsonReader reader, Type objectType, JsonContract contract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerMember, Object existingValue)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   at WeatherParser.Services.OpenWeatherMapParser.<Parse>d__4.MoveNext() in C:\Users\alexey.l\Documents\Visual Studio 2017\Projects\WeatherParser\WeatherParser\Services\OpenWeatherMapParser.cs:line 48
+
+> 4/9/2019 2:39:50 PM > Object reference not set to an instance of an object.; 
+   at WeatherParser.WeatherProvider.<GetWeatherForCity>d__5.MoveNext() in C:\Users\alexey.l\Documents\Visual Studio 2017\Projects\WeatherParser\WeatherParser\WeatherProvider.cs:line 30
+
+> 4/9/2019 2:39:53 PM > Begin getting weather for Andorra
+
+> 4/9/2019 2:39:53 PM > Begin request to OpenWeatherMap Api
+
+> 4/9/2019 2:39:54 PM > Response from OpenWeatherMap Api received. Http Code: OK
+
+> 4/9/2019 2:39:54 PM > Response from OpenWeatherMap: {"coord":{"lon":-0.13,"lat":51.51},"weather":[{"id":300,"main":"Drizzle","description":"light intensity drizzle","icon":"09d"}],"base":"stations","main":{"temp":280.32,"pressure":1012,"humidity":81,"temp_min":279.15,"temp_max":281.15},"visibility":10000,"wind":{"speed":4.1,"deg":80},"clouds":{"all":90},"dt":1485789600,"sys":{"type":1,"id":5091,"message":0.0103,"country":"GB","sunrise":1485762037,"sunset":1485794875},"id":2643743,"name":"London","cod":200}
+
+> 4/9/2019 2:39:54 PM > Weather for Andorra is gotten
+
+> 4/9/2019 2:40:04 PM > Begin getting weather for Angola
+
+> 4/9/2019 2:40:04 PM > Begin request to OpenWeatherMap Api
+
+> 4/9/2019 2:40:04 PM > Response from OpenWeatherMap Api received. Http Code: OK
+
+> 4/9/2019 2:40:04 PM > Response from OpenWeatherMap: {"coord":{"lon":-0.13,"lat":51.51},"weather":[{"id":300,"main":"Drizzle","description":"light intensity drizzle","icon":"09d"}],"base":"stations","main":{"temp":280.32,"pressure":1012,"humidity":81,"temp_min":279.15,"temp_max":281.15},"visibility":10000,"wind":{"speed":4.1,"deg":80},"clouds":{"all":90},"dt":1485789600,"sys":{"type":1,"id":5091,"message":0.0103,"country":"GB","sunrise":1485762037,"sunset":1485794875},"id":2643743,"name":"London","cod":200}
+
+> 4/9/2019 2:40:04 PM > Weather for Angola is gotten
+
+> 4/9/2019 2:40:10 PM > Begin getting weather for London
+
+> 4/9/2019 2:40:10 PM > Begin request to OpenWeatherMap Api
+
+> 4/9/2019 2:40:10 PM > Response from OpenWeatherMap Api received. Http Code: OK
+
+> 4/9/2019 2:40:12 PM > Response from OpenWeatherMap: {
+"coord": {
+"lon": -0.13,
+"lat": 51.51
+},
+"weather": [
+{
+"id": 300,
+"main": "Drizzle",
+"description": "light intensity drizzle",
+"icon": "09d"
+}
+],
+"base": "stations",
+"main": {
+"temp": -1,
+"pressure": 1012,
+"humidity": 81,
+"temp_min": 279.15,
+"temp_max": 281.15
+},
+"visibility": 10000,
+"wind": {
+"speed": 4.1,
+"deg": 80
+},
+"clouds": {
+"all": 90
+},
+"dt": 1485789600,
+"sys": {
+"type": 1,
+"id": 5091,
+"message": 0.0103,
+"country": "GB",
+"sunrise": 1485762037,
+"sunset": 1485794875
+},
+"id": 2643743,
+"name": "London",
+"cod": 200
+}
+
+> 4/9/2019 2:40:12 PM > Temperature in Kelvin cannot be less then 0; 
+   at WeatherParser.Utils.UnitsConverter.ConvertTemperatureKelvinToCelsius(Double temperatureKelvin) in C:\Users\alexey.l\Documents\Visual Studio 2017\Projects\WeatherParser\WeatherParser\Utils\UnitsConverter.cs:line 11
+   at WeatherParser.Services.OpenWeatherMapParser.MapResponseToWeatherResult(OpenWeatherMapResponse response) in C:\Users\alexey.l\Documents\Visual Studio 2017\Projects\WeatherParser\WeatherParser\Services\OpenWeatherMapParser.cs:line 74
+   at WeatherParser.Services.OpenWeatherMapParser.<Parse>d__4.MoveNext() in C:\Users\alexey.l\Documents\Visual Studio 2017\Projects\WeatherParser\WeatherParser\Services\OpenWeatherMapParser.cs:line 51
+
+> 4/9/2019 2:40:12 PM > Object reference not set to an instance of an object.; 
+   at WeatherParser.WeatherProvider.<GetWeatherForCity>d__5.MoveNext() in C:\Users\alexey.l\Documents\Visual Studio 2017\Projects\WeatherParser\WeatherParser\WeatherProvider.cs:line 30
+
+> 4/9/2019 2:40:14 PM > Begin getting weather for Anguilla
+
+> 4/9/2019 2:40:14 PM > Begin request to OpenWeatherMap Api
+
+> 4/9/2019 2:40:14 PM > Response from OpenWeatherMap Api received. Http Code: OK
+
+> 4/9/2019 2:40:14 PM > Response from OpenWeatherMap: {"coord":{"lon":-0.13,"lat":51.51},"weather":[{"id":300,"main":"Drizzle","description":"light intensity drizzle","icon":"09d"}],"base":"stations","main":{"temp":280.32,"pressure":1012,"humidity":81,"temp_min":279.15,"temp_max":281.15},"visibility":10000,"wind":{"speed":4.1,"deg":80},"clouds":{"all":90},"dt":1485789600,"sys":{"type":1,"id":5091,"message":0.0103,"country":"GB","sunrise":1485762037,"sunset":1485794875},"id":2643743,"name":"London","cod":200}
+
+> 4/9/2019 2:40:14 PM > Weather for Anguilla is gotten
+
+> 4/9/2019 2:40:24 PM > Begin getting weather for Antarctica
+
+> 4/9/2019 2:40:24 PM > Begin request to OpenWeatherMap Api
+
+> 4/9/2019 2:40:25 PM > Response from OpenWeatherMap Api received. Http Code: OK
+
+> 4/9/2019 2:40:25 PM > Response from OpenWeatherMap: {"coord":{"lon":-0.13,"lat":51.51},"weather":[{"id":300,"main":"Drizzle","description":"light intensity drizzle","icon":"09d"}],"base":"stations","main":{"temp":280.32,"pressure":1012,"humidity":81,"temp_min":279.15,"temp_max":281.15},"visibility":10000,"wind":{"speed":4.1,"deg":80},"clouds":{"all":90},"dt":1485789600,"sys":{"type":1,"id":5091,"message":0.0103,"country":"GB","sunrise":1485762037,"sunset":1485794875},"id":2643743,"name":"London","cod":200}
+
+> 4/9/2019 2:40:25 PM > Weather for Antarctica is gotten
+
+> 4/9/2019 2:40:27 PM > Begin getting weather for London
+
+> 4/9/2019 2:40:27 PM > Begin request to OpenWeatherMap Api
+
+> 4/9/2019 2:40:27 PM > Response from OpenWeatherMap Api received. Http Code: OK
+
+> 4/9/2019 2:40:28 PM > Response from OpenWeatherMap: {
+"coord": {
+"lon": -0.13,
+"lat": 51.51
+},
+"weather": [
+{
+"id": 300,
+"main": "Drizzle",
+"description": "light intensity drizzle",
+"icon": "09d"
+}
+],
+"base": "stations",
+"main": {
+"temp": 280.32,
+"pressure": "low",
+"humidity": 81,
+"temp_min": 279.15,
+"temp_max": 281.15
+},
+"visibility": 10000,
+"wind": {
+"speed": 4.1,
+"deg": 80
+},
+"clouds": {
+"all": 90
+},
+"dt": 1485789600,
+"sys": {
+"type": 1,
+"id": 5091,
+"message": 0.0103,
+"country": "GB",
+"sunrise": 1485762037,
+"sunset": 1485794875
+},
+"id": 2643743,
+"name": "London",
+"cod": 200
+}
+
+> 4/9/2019 2:40:28 PM > Could not convert string to integer: low. Path 'main.pressure', line 17, position 17.; 
+   at Newtonsoft.Json.JsonReader.ReadInt32String(String s)
+   at Newtonsoft.Json.JsonTextReader.FinishReadQuotedNumber(ReadType readType)
+   at Newtonsoft.Json.JsonTextReader.ReadNumberValue(ReadType readType)
+   at Newtonsoft.Json.JsonTextReader.ReadAsInt32()
+   at Newtonsoft.Json.JsonReader.ReadForType(JsonContract contract, Boolean hasConverter)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.PopulateObject(Object newObject, JsonReader reader, JsonObjectContract contract, JsonProperty member, String id)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.CreateObject(JsonReader reader, Type objectType, JsonContract contract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerMember, Object existingValue)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.CreateValueInternal(JsonReader reader, Type objectType, JsonContract contract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerMember, Object existingValue)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.SetPropertyValue(JsonProperty property, JsonConverter propertyConverter, JsonContainerContract containerContract, JsonProperty containerProperty, JsonReader reader, Object target)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.PopulateObject(Object newObject, JsonReader reader, JsonObjectContract contract, JsonProperty member, String id)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.CreateObject(JsonReader reader, Type objectType, JsonContract contract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerMember, Object existingValue)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.CreateValueInternal(JsonReader reader, Type objectType, JsonContract contract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerMember, Object existingValue)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   at WeatherParser.Services.OpenWeatherMapParser.<Parse>d__4.MoveNext() in C:\Users\alexey.l\Documents\Visual Studio 2017\Projects\WeatherParser\WeatherParser\Services\OpenWeatherMapParser.cs:line 48
+
+> 4/9/2019 2:40:28 PM > Object reference not set to an instance of an object.; 
+   at WeatherParser.WeatherProvider.<GetWeatherForCity>d__5.MoveNext() in C:\Users\alexey.l\Documents\Visual Studio 2017\Projects\WeatherParser\WeatherParser\WeatherProvider.cs:line 30
+
+> 4/9/2019 2:40:35 PM > Begin getting weather for Antigua and Barbuda
+
+> 4/9/2019 2:40:35 PM > Begin request to OpenWeatherMap Api
+
+> 4/9/2019 2:40:35 PM > Response from OpenWeatherMap Api received. Http Code: OK
+
+> 4/9/2019 2:40:35 PM > Response from OpenWeatherMap: {"coord":{"lon":-0.13,"lat":51.51},"weather":[{"id":300,"main":"Drizzle","description":"light intensity drizzle","icon":"09d"}],"base":"stations","main":{"temp":280.32,"pressure":1012,"humidity":81,"temp_min":279.15,"temp_max":281.15},"visibility":10000,"wind":{"speed":4.1,"deg":80},"clouds":{"all":90},"dt":1485789600,"sys":{"type":1,"id":5091,"message":0.0103,"country":"GB","sunrise":1485762037,"sunset":1485794875},"id":2643743,"name":"London","cod":200}
+
+> 4/9/2019 2:40:35 PM > Weather for Antigua and Barbuda is gotten
+
+> 4/9/2019 2:40:45 PM > Begin getting weather for Argentina
+
+> 4/9/2019 2:40:45 PM > Begin request to OpenWeatherMap Api
+
+> 4/9/2019 2:40:45 PM > Response from OpenWeatherMap Api received. Http Code: OK
+
+> 4/9/2019 2:40:45 PM > Response from OpenWeatherMap: {"coord":{"lon":-0.13,"lat":51.51},"weather":[{"id":300,"main":"Drizzle","description":"light intensity drizzle","icon":"09d"}],"base":"stations","main":{"temp":280.32,"pressure":1012,"humidity":81,"temp_min":279.15,"temp_max":281.15},"visibility":10000,"wind":{"speed":4.1,"deg":80},"clouds":{"all":90},"dt":1485789600,"sys":{"type":1,"id":5091,"message":0.0103,"country":"GB","sunrise":1485762037,"sunset":1485794875},"id":2643743,"name":"London","cod":200}
+
+> 4/9/2019 2:40:45 PM > Weather for Argentina is gotten
+
+> 4/9/2019 2:40:55 PM > Begin getting weather for Armenia
+
+> 4/9/2019 2:40:55 PM > Begin request to OpenWeatherMap Api
+
+> 4/9/2019 2:40:55 PM > Response from OpenWeatherMap Api received. Http Code: OK
+
+> 4/9/2019 2:40:55 PM > Response from OpenWeatherMap: {"coord":{"lon":-0.13,"lat":51.51},"weather":[{"id":300,"main":"Drizzle","description":"light intensity drizzle","icon":"09d"}],"base":"stations","main":{"temp":280.32,"pressure":1012,"humidity":81,"temp_min":279.15,"temp_max":281.15},"visibility":10000,"wind":{"speed":4.1,"deg":80},"clouds":{"all":90},"dt":1485789600,"sys":{"type":1,"id":5091,"message":0.0103,"country":"GB","sunrise":1485762037,"sunset":1485794875},"id":2643743,"name":"London","cod":200}
+
+> 4/9/2019 2:40:55 PM > Weather for Armenia is gotten
+
+> 4/9/2019 2:41:05 PM > Begin getting weather for Aruba
+
+> 4/9/2019 2:41:05 PM > Begin request to OpenWeatherMap Api
+
+> 4/9/2019 2:41:06 PM > Response from OpenWeatherMap Api received. Http Code: OK
+
+> 4/9/2019 2:41:06 PM > Response from OpenWeatherMap: {"coord":{"lon":-0.13,"lat":51.51},"weather":[{"id":300,"main":"Drizzle","description":"light intensity drizzle","icon":"09d"}],"base":"stations","main":{"temp":280.32,"pressure":1012,"humidity":81,"temp_min":279.15,"temp_max":281.15},"visibility":10000,"wind":{"speed":4.1,"deg":80},"clouds":{"all":90},"dt":1485789600,"sys":{"type":1,"id":5091,"message":0.0103,"country":"GB","sunrise":1485762037,"sunset":1485794875},"id":2643743,"name":"London","cod":200}
+
+> 4/9/2019 2:41:06 PM > Weather for Aruba is gotten
+
+> 4/9/2019 2:41:16 PM > Begin getting weather for Australia
+
+> 4/9/2019 2:41:16 PM > Begin request to OpenWeatherMap Api
+
+> 4/9/2019 2:41:16 PM > Response from OpenWeatherMap Api received. Http Code: OK
+
+> 4/9/2019 2:41:16 PM > Response from OpenWeatherMap: {"coord":{"lon":-0.13,"lat":51.51},"weather":[{"id":300,"main":"Drizzle","description":"light intensity drizzle","icon":"09d"}],"base":"stations","main":{"temp":280.32,"pressure":1012,"humidity":81,"temp_min":279.15,"temp_max":281.15},"visibility":10000,"wind":{"speed":4.1,"deg":80},"clouds":{"all":90},"dt":1485789600,"sys":{"type":1,"id":5091,"message":0.0103,"country":"GB","sunrise":1485762037,"sunset":1485794875},"id":2643743,"name":"London","cod":200}
+
+> 4/9/2019 2:41:16 PM > Weather for Australia is gotten
+
+> 4/9/2019 2:41:20 PM > Application started
+
+> 4/9/2019 2:41:20 PM > Begin getting weather for London
+
+> 4/9/2019 2:41:20 PM > Begin request to OpenWeatherMap Api
+
+> 4/9/2019 2:41:20 PM > Response from OpenWeatherMap Api received. Http Code: BadRequest
+
+> 4/9/2019 2:41:20 PM > Response from OpenWeatherMap: {
+"error": {
+"code": 103,
+"message": "api key has expired"}
+}
+
+> 4/9/2019 4:02:17 PM > Value cannot be null.
+Parameter name: source; 
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source)
+   at WeatherParser.Services.OpenWeatherMapParser.MapResponseToWeatherResult(OpenWeatherMapResponse response) in C:\Users\alexey.l\Documents\Visual Studio 2017\Projects\WeatherParser\WeatherParser\Services\OpenWeatherMapParser.cs:line 74
+   at WeatherParser.Services.OpenWeatherMapParser.<Parse>d__4.MoveNext() in C:\Users\alexey.l\Documents\Visual Studio 2017\Projects\WeatherParser\WeatherParser\Services\OpenWeatherMapParser.cs:line 51
+
+> 4/9/2019 2:41:20 PM > Object reference not set to an instance of an object.; 
+   at WeatherParser.WeatherProvider.<GetWeatherForCity>d__5.MoveNext() in C:\Users\alexey.l\Documents\Visual Studio 2017\Projects\WeatherParser\WeatherParser\WeatherProvider.cs:line 30
+
+> 4/9/2019 2:41:26 PM > Begin getting weather for Austria
+
+> 4/9/2019 2:41:26 PM > Begin request to OpenWeatherMap Api
+
+> 4/9/2019 2:41:26 PM > Response from OpenWeatherMap Api received. Http Code: OK
+
+> 4/9/2019 2:41:26 PM > Response from OpenWeatherMap: {"coord":{"lon":-0.13,"lat":51.51},"weather":[{"id":300,"main":"Drizzle","description":"light intensity drizzle","icon":"09d"}],"base":"stations","main":{"temp":280.32,"pressure":1012,"humidity":81,"temp_min":279.15,"temp_max":281.15},"visibility":10000,"wind":{"speed":4.1,"deg":80},"clouds":{"all":90},"dt":1485789600,"sys":{"type":1,"id":5091,"message":0.0103,"country":"GB","sunrise":1485762037,"sunset":1485794875},"id":2643743,"name":"London","cod":200}
+
+> 4/9/2019 2:41:26 PM > Weather for Austria is gotten
+
+> 4/9/2019 2:41:36 PM > Begin getting weather for Azerbaijan
+
+> 4/9/2019 2:41:36 PM > Begin request to OpenWeatherMap Api
+
+> 4/9/2019 2:41:36 PM > Response from OpenWeatherMap Api received. Http Code: OK
+
+> 4/9/2019 2:41:36 PM > Response from OpenWeatherMap: {"coord":{"lon":-0.13,"lat":51.51},"weather":[{"id":300,"main":"Drizzle","description":"light intensity drizzle","icon":"09d"}],"base":"stations","main":{"temp":280.32,"pressure":1012,"humidity":81,"temp_min":279.15,"temp_max":281.15},"visibility":10000,"wind":{"speed":4.1,"deg":80},"clouds":{"all":90},"dt":1485789600,"sys":{"type":1,"id":5091,"message":0.0103,"country":"GB","sunrise":1485762037,"sunset":1485794875},"id":2643743,"name":"London","cod":200}
+
+> 4/9/2019 2:41:36 PM > Weather for Azerbaijan is gotten
+
+> 4/9/2019 2:41:46 PM > Begin getting weather for Bahamas
+
+> 4/9/2019 2:41:46 PM > Begin request to OpenWeatherMap Api
+
+> 4/9/2019 2:41:47 PM > Response from OpenWeatherMap Api received. Http Code: OK
+
+> 4/9/2019 2:41:47 PM > Response from OpenWeatherMap: {"coord":{"lon":-0.13,"lat":51.51},"weather":[{"id":300,"main":"Drizzle","description":"light intensity drizzle","icon":"09d"}],"base":"stations","main":{"temp":280.32,"pressure":1012,"humidity":81,"temp_min":279.15,"temp_max":281.15},"visibility":10000,"wind":{"speed":4.1,"deg":80},"clouds":{"all":90},"dt":1485789600,"sys":{"type":1,"id":5091,"message":0.0103,"country":"GB","sunrise":1485762037,"sunset":1485794875},"id":2643743,"name":"London","cod":200}
+
+> 4/9/2019 2:41:47 PM > Weather for Bahamas is gotten
+
+> 4/9/2019 2:41:51 PM > Begin getting weather for 
+
+> 4/9/2019 2:41:52 PM > cityName is required; 
+   at WeatherParser.Services.OpenWeatherMapParser.<Parse>d__4.MoveNext() in C:\Users\alexey.l\Documents\Visual Studio 2017\Projects\WeatherParser\WeatherParser\Services\OpenWeatherMapParser.cs:line 32
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1.ConfiguredTaskAwaiter.GetResult()
+   at WeatherParser.WeatherProvider.<GetWeatherForCity>d__5.MoveNext() in C:\Users\alexey.l\Documents\Visual Studio 2017\Projects\WeatherParser\WeatherParser\WeatherProvider.cs:line 29
+
+> 4/9/2019 2:41:57 PM > Begin getting weather for Bahrain
+
+> 4/9/2019 2:41:57 PM > Begin request to OpenWeatherMap Api
+
+> 4/9/2019 2:41:57 PM > Response from OpenWeatherMap Api received. Http Code: OK
+
+> 4/9/2019 2:41:57 PM > Response from OpenWeatherMap: {"coord":{"lon":-0.13,"lat":51.51},"weather":[{"id":300,"main":"Drizzle","description":"light intensity drizzle","icon":"09d"}],"base":"stations","main":{"temp":280.32,"pressure":1012,"humidity":81,"temp_min":279.15,"temp_max":281.15},"visibility":10000,"wind":{"speed":4.1,"deg":80},"clouds":{"all":90},"dt":1485789600,"sys":{"type":1,"id":5091,"message":0.0103,"country":"GB","sunrise":1485762037,"sunset":1485794875},"id":2643743,"name":"London","cod":200}
+
+> 4/9/2019 2:41:57 PM > Weather for Bahrain is gotten
+
+> 4/9/2019 2:42:07 PM > Begin getting weather for Bangladesh
+
+> 4/9/2019 2:42:07 PM > Begin request to OpenWeatherMap Api
+
+> 4/9/2019 2:42:07 PM > Response from OpenWeatherMap Api received. Http Code: OK
+
+> 4/9/2019 2:42:07 PM > Response from OpenWeatherMap: {"coord":{"lon":-0.13,"lat":51.51},"weather":[{"id":300,"main":"Drizzle","description":"light intensity drizzle","icon":"09d"}],"base":"stations","main":{"temp":280.32,"pressure":1012,"humidity":81,"temp_min":279.15,"temp_max":281.15},"visibility":10000,"wind":{"speed":4.1,"deg":80},"clouds":{"all":90},"dt":1485789600,"sys":{"type":1,"id":5091,"message":0.0103,"country":"GB","sunrise":1485762037,"sunset":1485794875},"id":2643743,"name":"London","cod":200}
+
+> 4/9/2019 2:42:07 PM > Weather for Bangladesh is gotten
+
+> 4/9/2019 2:42:17 PM > Begin getting weather for Barbados
+
+> 4/9/2019 2:42:17 PM > Begin request to OpenWeatherMap Api
+
+> 4/9/2019 2:42:18 PM > Response from OpenWeatherMap Api received. Http Code: OK
+
+> 4/9/2019 2:42:18 PM > Response from OpenWeatherMap: {"coord":{"lon":-0.13,"lat":51.51},"weather":[{"id":300,"main":"Drizzle","description":"light intensity drizzle","icon":"09d"}],"base":"stations","main":{"temp":280.32,"pressure":1012,"humidity":81,"temp_min":279.15,"temp_max":281.15},"visibility":10000,"wind":{"speed":4.1,"deg":80},"clouds":{"all":90},"dt":1485789600,"sys":{"type":1,"id":5091,"message":0.0103,"country":"GB","sunrise":1485762037,"sunset":1485794875},"id":2643743,"name":"London","cod":200}
+
+> 4/9/2019 2:42:18 PM > Weather for Barbados is gotten
+
+> 4/9/2019 2:42:28 PM > Begin getting weather for Belarus
+
+> 4/9/2019 2:42:28 PM > Begin request to OpenWeatherMap Api
+
+> 4/9/2019 2:42:28 PM > Response from OpenWeatherMap Api received. Http Code: OK
+
+> 4/9/2019 2:42:28 PM > Response from OpenWeatherMap: {"coord":{"lon":-0.13,"lat":51.51},"weather":[{"id":300,"main":"Drizzle","description":"light intensity drizzle","icon":"09d"}],"base":"stations","main":{"temp":280.32,"pressure":1012,"humidity":81,"temp_min":279.15,"temp_max":281.15},"visibility":10000,"wind":{"speed":4.1,"deg":80},"clouds":{"all":90},"dt":1485789600,"sys":{"type":1,"id":5091,"message":0.0103,"country":"GB","sunrise":1485762037,"sunset":1485794875},"id":2643743,"name":"London","cod":200}
+
+> 4/9/2019 2:42:28 PM > Weather for Belarus is gotten
+
+> 4/9/2019 3:37:01 PM > Application shut down
+
+> 4/9/2019 3:42:39 PM > Application started
+
+> 4/9/2019 3:59:30 PM > Begin getting weather for London
+
+> 4/9/2019 3:59:30 PM > Begin request to OpenWeatherMap Api
+
+> 4/9/2019 3:59:30 PM > Response from OpenWeatherMap Api received. Http Code: OK
+
+> 4/9/2019 3:59:30 PM > Response from OpenWeatherMap: {
+"error": {
+"code": 102,
+"message": "service is unavailable"}
+}
+
+> 4/9/2019 3:59:30 PM > Value cannot be null.
+Parameter name: source; 
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source)
+   at WeatherParser.Services.OpenWeatherMapParser.MapResponseToWeatherResult(OpenWeatherMapResponse response) in C:\Users\alexey.l\Documents\Visual Studio 2017\Projects\WeatherParser\WeatherParser\Services\OpenWeatherMapParser.cs:line 74
+   at WeatherParser.Services.OpenWeatherMapParser.<Parse>d__4.MoveNext() in C:\Users\alexey.l\Documents\Visual Studio 2017\Projects\WeatherParser\WeatherParser\Services\OpenWeatherMapParser.cs:line 51
+
+> 4/9/2019 3:59:30 PM > Object reference not set to an instance of an object.; 
+   at WeatherParser.WeatherProvider.<GetWeatherForCity>d__5.MoveNext() in C:\Users\alexey.l\Documents\Visual Studio 2017\Projects\WeatherParser\WeatherParser\WeatherProvider.cs:line 30
+
+> 4/9/2019 4:04:19 PM > Application started
+
+> 4/9/2019 4:04:19 PM > Begin getting weather for London
+
+> 4/9/2019 4:04:19 PM > Begin request to OpenWeatherMap Api
+
+> 4/9/2019 4:04:21 PM > An error occurred while sending the request.; Unable to connect to the remote server
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at WeatherParser.Services.OpenWeatherMapParser.<Parse>d__4.MoveNext() in C:\Users\alexey.l\Documents\Visual Studio 2017\Projects\WeatherParser\WeatherParser\Services\OpenWeatherMapParser.cs:line 42
+
+> 4/9/2019 4:04:21 PM > Object reference not set to an instance of an object.; 
+   at WeatherParser.WeatherProvider.<GetWeatherForCity>d__5.MoveNext() in C:\Users\alexey.l\Documents\Visual Studio 2017\Projects\WeatherParser\WeatherParser\WeatherProvider.cs:line 30
+
+> 4/9/2019 4:07:05 PM > Application started
+
+> 4/9/2019 4:07:06 PM > Begin getting weather for London
+
+> 4/9/2019 4:07:06 PM > Begin request to OpenWeatherMap Api
+
+> 4/9/2019 4:07:06 PM > Response from OpenWeatherMap Api received. Http Code: OK
+
+> 4/9/2019 4:07:06 PM > Response from OpenWeatherMap: {
+"coord": {
+"lon": -0.13,
+"lat": 51.51
+},
+"weather": [],
+"base": "stations",
+"main": {
+"temp": -1,
+"pressure": 1012,
+"humidity": 81,
+"temp_min": 279.15,
+"temp_max": 281.15
+},
+"visibility": 10000,
+"wind": {
+"speed": 4.1,
+"deg": 80
+},
+"clouds": {
+"all": 90
+},
+"dt": 1485789600,
+"sys": {
+"type": 1,
+"id": 5091,
+"message": 0.0103,
+"country": "GB",
+"sunrise": 1485762037,
+"sunset": 1485794875
+},
+"id": 2643743,
+"name": "London",
+"cod": 200
+}
+
+> 4/9/2019 4:07:06 PM > Object reference not set to an instance of an object.; 
+   at WeatherParser.Services.OpenWeatherMapParser.MapResponseToWeatherResult(OpenWeatherMapResponse response) in C:\Users\alexey.l\Documents\Visual Studio 2017\Projects\WeatherParser\WeatherParser\Services\OpenWeatherMapParser.cs:line 74
+   at WeatherParser.Services.OpenWeatherMapParser.<Parse>d__4.MoveNext() in C:\Users\alexey.l\Documents\Visual Studio 2017\Projects\WeatherParser\WeatherParser\Services\OpenWeatherMapParser.cs:line 51
+
+> 4/9/2019 4:07:06 PM > Object reference not set to an instance of an object.; 
+   at WeatherParser.WeatherProvider.<GetWeatherForCity>d__5.MoveNext() in C:\Users\alexey.l\Documents\Visual Studio 2017\Projects\WeatherParser\WeatherParser\WeatherProvider.cs:line 30
+
+> 4/9/2019 4:08:42 PM > Begin getting weather for London
+
+> 4/9/2019 4:08:42 PM > Begin request to OpenWeatherMap Api
+
+> 4/9/2019 4:10:22 PM > A task was canceled.; 
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at WeatherParser.Services.OpenWeatherMapParser.<Parse>d__4.MoveNext() in C:\Users\alexey.l\Documents\Visual Studio 2017\Projects\WeatherParser\WeatherParser\Services\OpenWeatherMapParser.cs:line 42
+
+> 4/9/2019 4:10:22 PM > Object reference not set to an instance of an object.; 
+   at WeatherParser.WeatherProvider.<GetWeatherForCity>d__5.MoveNext() in C:\Users\alexey.l\Documents\Visual Studio 2017\Projects\WeatherParser\WeatherParser\WeatherProvider.cs:line 30
+
+> 4/9/2019 4:22:20 PM > Application started
+
+> 4/9/2019 4:22:20 PM > Begin getting weather for London
+
+> 4/9/2019 4:22:20 PM > Begin request to OpenWeatherMap Api
+
+> 4/9/2019 4:22:20 PM > Response from OpenWeatherMap Api received. Http Code: OK
+
+> 4/9/2019 4:22:20 PM > Response from OpenWeatherMap: {
+"coord": {
+"lon": -0.13,
+"lat": 51.51
+},
+"weather": [],
+"base": "stations",
+"main": {
+"temp": 280.32,
+"pressure": 1012,
+"humidity": 81,
+"temp_min": 279.15,
+"temp_max": 281.15
+},
+"visibility": 10000,
+"wind": {
+"speed": 4.1,
+"deg": 80
+},
+"clouds": {
+"all": 90
+},
+"dt": 1485789600,
+"sys": {
+"type": 1,
+"id": 5091,
+"message": 0.0103,
+"country": "GB",
+"sunrise": 1485762037,
+"sunset": 1485794875
+},
+"id": 2643743,
+"name": "London",
+"cod": 200
+}
+
+> 4/9/2019 4:22:20 PM > Object reference not set to an instance of an object.; 
+   at WeatherParser.Services.OpenWeatherMapParser.MapResponseToWeatherResult(OpenWeatherMapResponse response) in C:\Users\alexey.l\Documents\Visual Studio 2017\Projects\WeatherParser\WeatherParser\Services\OpenWeatherMapParser.cs:line 74
+   at WeatherParser.Services.OpenWeatherMapParser.<Parse>d__4.MoveNext() in C:\Users\alexey.l\Documents\Visual Studio 2017\Projects\WeatherParser\WeatherParser\Services\OpenWeatherMapParser.cs:line 51
+
+> 4/9/2019 4:22:20 PM > Object reference not set to an instance of an object.; 
+   at WeatherParser.WeatherProvider.<GetWeatherForCity>d__5.MoveNext() in C:\Users\alexey.l\Documents\Visual Studio 2017\Projects\WeatherParser\WeatherParser\WeatherProvider.cs:line 30
