@@ -1,6 +1,6 @@
 ﻿namespace WeatherParser.Models
 {
-    class WeatherResult
+    internal sealed class WeatherResult
     {
         public WeatherResult(string title, string description, int temperatureCelsius, int pressure)
         {
