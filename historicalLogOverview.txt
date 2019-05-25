@@ -1,0 +1,50 @@
+Ошибка 1
+
+Ошибка возникает в файле OpenWeatherMapParser на строке 48 при вызове метода JsonConvert.DeserializeObject<T>. Данная ошибка могла произойти по 2м причинам:
+1 — потеря данных при передаче по сети
+2 — ошибка при сериализации на стороне API
+Нужно написать try catch блок, который поймает ошибку и, по желанию, повторит запрос.
+
+====================
+
+Ошибка 2
+
+Ошибка возникает в файле WeatherProvider.cs на строке 30 при работе с переменной result. Ошибка связана с тем, что во время обращения к свойству переменной result, сама переменная была равна null.
+Нужно перед обращением к свойству данной переменной проверь её на равенство null:
+
+var formattedResult = result != null ?
+	$"Current weather in {cityName}: {result.Title} ({result.Description}) - {result.TemperatureCelsius} C*, Pressure: {result.Pressure}" :
+	"Result equals to null.";
+
+====================
+
+Ошибка 3
+
+Ошибка возникает в файле UnitsConverter на строке 11 при конвертации температуры из K в C. Данная ошибка выбрасывается намеренно из кода, обозначая, что входящее значение температуры в K ниже 0. Есть несколько путей работы с ошибкой в зависимости от потребности:
+1 — изменить метод ConvertTemperatureKelvinToCelsius таким образом, чтобы этот метод умел также обрабатывать значения ниже 0 (то-есть убрать явный вызов ошибки);
+2 — добавить блок try catch в файле OpenWeatherMapParser.cs, обернув ним строку 74, и внутри catch выполнить обработку ошибки.
+
+====================
+
+Ошибка 4
+
+Ошибка возникает в файле OpenWeatherMapParser.cs на строке 48 при вызове JsonConvert.DeserializeObject<T>. Ошибка означает, что OpenWeatherMapResponse.WeatherGeneralInformation.Pressure является значением типа int, а в JSON main.pressure является строкой. Чтобы исправить ошибку, надо изменить тип Pressure с int на string. Если значение этого типа динамически меняет тип — нужно написать конвертер и вручную делать проверку типа и конвертацию.
+
+====================
+
+Ошибка 5
+
+Ошибка возникает в файле OpenWeatherMapParser.cs на строке 32. Необходимо передать название города в коде при создании экземпляра класса WeatherProvider в файле Program.cs на строке 15. Обработка этой ошибки не нужна, поскольку она является критически важной для работы логики кода.
+
+====================
+
+Ошибка 6
+
+Ошибка возникает в файле OpenWeatherMapParser.cs на строке 74 при вызове метода расширения FirstOrDefault на перечислении response.WeatherDescription. Необходимо несколько переписать код, добавив дополнительные проверки:
+
+return new WeatherResult(
+    response.WeatherDescription?.FirstOrDefault()?.Title,
+    response.WeatherDescription?.FirstOrDefault()?.FullDescription,
+    (int)Math.Round(UnitsConverter.ConvertTemperatureKelvinToCelsius((double)response.WeatherGeneralInformation.Temperature), 0),
+    response.WeatherGeneralInformation.Pressure
+);
