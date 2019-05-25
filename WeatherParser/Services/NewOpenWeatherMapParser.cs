@@ -2,7 +2,9 @@
 using System;
 using System.Dynamic;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Web;
 using WeatherParser.Infrastructure;
 using WeatherParser.Models;
 using WeatherParser.Utils;
@@ -12,42 +14,68 @@ namespace WeatherParser.Services
     internal sealed class NewOpenWeatherMapParser : IWeatherParser
     {
         private readonly Logger _logger = new Logger();
+        private readonly HttpClient _client;
+        private readonly string _apiKey;
+        private readonly string _apiUrl;
 
-        public async Task<WeatherResult> Parse(string cityName)
+        public NewOpenWeatherMapParser(Logger logger, HttpClient client, string apiUrl, string apiKey)
+        {
+            _logger = logger;
+            _apiUrl = apiUrl;
+            _apiKey = apiKey;
+            _client = client;
+        }
+
+        public async Task<WeatherResult> ParseAsync(string cityName, CancellationToken cancellationToken)
         {
             if (string.IsNullOrEmpty(cityName))
             {
                 throw new ArgumentException("cityName is required");
             }
 
+            cancellationToken.ThrowIfCancellationRequested();
+
             try
             {
-                using (var httpClient = new HttpClient())
-                {
-                    _logger.WriteLog("Begin request to OpenWeatherMap Api");
-                    var httpResponse = await httpClient.GetAsync("https://samples.openweathermap.org/data/2.5/forecast/hourly?q=London,us&appid=b6907d289e10d714a6e88b30761fae22");
-                    _logger.WriteLog($"Response from OpenWeatherMap Api received. Http Code: {httpResponse?.StatusCode}");
+                string apiRequestUrl = GetApiRequestUrl(cityName);
 
-                    var responseJson = await httpResponse.Content.ReadAsStringAsync();
-                    _logger.WriteLog($"Response from OpenWeatherMap: {responseJson}");
+                _logger.WriteLog("Begin request to OpenWeatherMap Api");
+                var httpResponse = await _client.GetAsync(apiRequestUrl, cancellationToken);
+                _logger.WriteLog($"Response from OpenWeatherMap Api received. Http Code: {httpResponse?.StatusCode}");
 
-                    dynamic parsedResponse = JsonConvert.DeserializeObject<ExpandoObject>(responseJson);
-                    var last = parsedResponse.list.Count > 0 ? parsedResponse.list[parsedResponse.list.Count - 1] : null;
-                    if (last == null)
-                        return null;
+                cancellationToken.ThrowIfCancellationRequested();
 
-                    var lastWeather = (last.weather?.Count ?? 0) >= 1 ? last.weather[0] : null;
-                    return new WeatherResult((string)lastWeather?.main, (string)lastWeather?.description,
-                        (int)Math.Round(UnitsConverter.ConvertTemperatureKelvinToCelsius((double)(last.main?.temp ?? 0M)), 0),
-                        (int?)last.main?.pressure ?? 0);
-                }
+                var responseJson = await httpResponse.Content.ReadAsStringAsync();
+                _logger.WriteLog($"Response from OpenWeatherMap: {responseJson}");
+
+                cancellationToken.ThrowIfCancellationRequested();
+
+                dynamic parsedResponse = JsonConvert.DeserializeObject<ExpandoObject>(responseJson);
+                var last = parsedResponse.list.Count > 0 ? parsedResponse.list[parsedResponse.list.Count - 1] : null;
+                if (last == null)
+                    return null;
+
+                var lastWeather = (last.weather?.Count ?? 0) >= 1 ? last.weather[0] : null;
+                return new WeatherResult((string)lastWeather?.main, (string)lastWeather?.description,
+                    (int)Math.Round(UnitsConverter.ConvertTemperatureKelvinToCelsius((double)(last.main?.temp ?? 0M)), 0),
+                    (int?)last.main?.pressure ?? 0);
             }
-            catch (Exception e)
+            catch (Exception e) when (!(e is OperationCanceledException))
             {
                 _logger.WriteExceptionLog(e);
             }
 
             return null;
+        }
+
+        private string GetApiRequestUrl(string cityName)
+        {
+            var builder = new UriBuilder(_apiUrl);
+            var query = HttpUtility.ParseQueryString(builder.Query);
+            query["appid"] = _apiKey;
+            query["q"] = cityName;
+            builder.Query = query.ToString();
+            return builder.ToString();
         }
     }
 }

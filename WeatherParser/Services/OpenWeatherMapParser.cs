@@ -2,6 +2,7 @@
 using System;
 using System.Linq;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using WeatherParser.Infrastructure;
@@ -15,40 +16,46 @@ namespace WeatherParser.Services
         private readonly string _apiUrl;
         private readonly string _apiKey;
 
-        private readonly Logger _logger = new Logger();
+        private readonly Logger _logger;
+        private readonly HttpClient _client;
 
-        public OpenWeatherMapParser(string apiUrl, string apiKey)
+        public OpenWeatherMapParser(Logger logger, HttpClient client, string apiUrl, string apiKey)
         {
+            _logger = logger;
             _apiUrl = apiUrl;
             _apiKey = apiKey;
+            _client = client;
         }
 
-        public async Task<WeatherResult> Parse(string cityName)
+        public async Task<WeatherResult> ParseAsync(string cityName, CancellationToken cancellationToken)
         {
             if (string.IsNullOrEmpty(cityName))
             {
                 throw new ArgumentException("cityName is required");
             }
 
+            cancellationToken.ThrowIfCancellationRequested();
+
             try
             {
-                using (var httpClient = new HttpClient())
-                {
-                    string apiRequestUrl = GetApiRequestUrl(cityName);
+                string apiRequestUrl = GetApiRequestUrl(cityName);
 
-                    _logger.WriteLog("Begin request to OpenWeatherMap Api");
-                    var httpResponse = await httpClient.GetAsync(apiRequestUrl);
-                    _logger.WriteLog($"Response from OpenWeatherMap Api received. Http Code: {httpResponse?.StatusCode}");
+                _logger.WriteLog("Begin request to OpenWeatherMap Api");
+                var httpResponse = await _client.GetAsync(apiRequestUrl, cancellationToken);
+                _logger.WriteLog($"Response from OpenWeatherMap Api received. Http Code: {httpResponse?.StatusCode}");
 
-                    var responseJson = await httpResponse.Content.ReadAsStringAsync();
-                    _logger.WriteLog($"Response from OpenWeatherMap: {responseJson}");
+                cancellationToken.ThrowIfCancellationRequested();
 
-                    var parsedResponse = JsonConvert.DeserializeObject<OpenWeatherMapResponse>(responseJson);
+                var responseJson = await httpResponse.Content.ReadAsStringAsync();
+                _logger.WriteLog($"Response from OpenWeatherMap: {responseJson}");
 
-                    return MapResponseToWeatherResult(parsedResponse);
-                }
+                cancellationToken.ThrowIfCancellationRequested();
+
+                var parsedResponse = JsonConvert.DeserializeObject<OpenWeatherMapResponse>(responseJson);
+
+                return MapResponseToWeatherResult(parsedResponse);
             }
-            catch (Exception e)
+            catch (Exception e) when (!(e is OperationCanceledException))
             {
                 _logger.WriteExceptionLog(e);
             }
