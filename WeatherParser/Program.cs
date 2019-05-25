@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Configuration;
-using System.Threading.Tasks;
+using System.Threading;
 using WeatherParser.Infrastructure;
 using WeatherParser.Services;
 
@@ -8,22 +8,28 @@ namespace WeatherParser
 {
     internal static class Program
     {
-        private static async Task Main(string[] args)
+        private static readonly Logger _logger = new Logger();
+        private static readonly string _apiUrl = ConfigurationManager.AppSettings["OpenWeatherMapApiUrl"];
+        private static readonly string _apiKey = ConfigurationManager.AppSettings["OpenWeatherMapApiId"];
+
+        private static void Main(string[] args)
         {
-            var _logger = new Logger();
             _logger.WriteLog("Application started");
 
-            var weatherProvider = new WeatherProvider(new NewOpenWeatherMapParser());
-            var currentWeather = await weatherProvider.GetWeatherForCityAsync("London");
-            weatherProvider = new WeatherProvider(new OpenWeatherMapParser(
-                ConfigurationManager.AppSettings["OpenWeatherMapApiUrl"],
-                ConfigurationManager.AppSettings["OpenWeatherMapApiId"]));
-            currentWeather = await weatherProvider.GetWeatherForCityAsync("London");
-            Console.Write(currentWeather);
+            var tasks = new[]
+            {
+                new WeatherProvider(new NewOpenWeatherMapParser())
+                .GetWeatherForCityAsync("London")
+                .ContinueWith(task => _logger.WriteLog(task.Result)),
+
+                new WeatherProvider(new OpenWeatherMapParser(_apiUrl, _apiKey))
+                .GetWeatherForCityAsync("London")
+                .ContinueWith(task => _logger.WriteLog(task.Result))
+            };
 
             Console.ReadKey();
             _logger.WriteLog("Application shut down");
-            await Task.Delay(3000);
+            Thread.Sleep(3000);
         }
     }
 }
