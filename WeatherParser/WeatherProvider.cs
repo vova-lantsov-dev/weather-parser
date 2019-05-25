@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Configuration;
+using System.Threading;
 using System.Threading.Tasks;
 using WeatherParser.Infrastructure;
 using WeatherParser.Services;
@@ -8,37 +8,26 @@ namespace WeatherParser
 {
     internal sealed class WeatherProvider
     {
-        private IWeatherParser WeatherParser { get; }
-        private readonly Logger _logger = new Logger();
+        private readonly IWeatherParser _weatherParser;
+        private readonly Logger _logger;
 
-        public WeatherProvider()
+        public WeatherProvider(Logger logger, IWeatherParser instance)
         {
-            WeatherParser = new OpenWeatherMapParser(
-                ConfigurationManager.AppSettings["OpenWeatherMapApiUrl"],
-                ConfigurationManager.AppSettings["OpenWeatherMapApiId"]);
+            _weatherParser = instance;
+            _logger = logger;
         }
 
-        public async Task<string> GetWeatherForCity(string cityName)
+        public async Task<string> GetWeatherForCityAsync(string cityName, CancellationToken cancellationToken)
         {
-            try
-            {
-                _logger.WriteLog($"Begin getting weather for {cityName}");
+            _logger.WriteLog($"Begin getting weather for {cityName}");
 
-                var result = await WeatherParser.Parse(cityName).ConfigureAwait(false);
-                var formattedResult = result == null ?
-                    "Result equals to null." :
-                    $"Current weather in {cityName}: {result.Title} ({result.Description}) - {result.TemperatureCelsius} C*, Pressure: {result.Pressure}";
+            var result = await _weatherParser.ParseAsync(cityName, cancellationToken).ConfigureAwait(false) ?? throw new ArgumentException("Result equals to null.", "result");
+            var formattedResult =
+                $"Current weather in {cityName}: {result.Title} ({result.Description}) - {result.TemperatureCelsius} C*, Pressure: {result.Pressure}";
 
-                _logger.WriteLog($"Weather for {cityName} is gotten");
+            _logger.WriteLog($"Weather for {cityName} is gotten");
 
-                return formattedResult;
-            }
-            catch (Exception e)
-            {
-                _logger.WriteExceptionLog(e);
-            }
-
-            return null;
+            return formattedResult;
         }
     }
 }

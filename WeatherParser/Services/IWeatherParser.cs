@@ -1,10 +1,11 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 using WeatherParser.Models;
 
 namespace WeatherParser.Services
 {
     interface IWeatherParser
     {
-        Task<WeatherResult> Parse(string cityName);
+        Task<WeatherResult> ParseAsync(string cityName, CancellationToken cancellationToken);
     }
 }

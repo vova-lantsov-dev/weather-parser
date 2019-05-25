@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Linq;
+using System.Dynamic;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
@@ -11,15 +11,15 @@ using WeatherParser.Utils;
 
 namespace WeatherParser.Services
 {
-    internal sealed class OpenWeatherMapParser : IWeatherParser
+    internal sealed class NewOpenWeatherMapParser : IWeatherParser
     {
-        private readonly string _apiUrl;
-        private readonly string _apiKey;
-
-        private readonly Logger _logger;
+        private readonly Logger _logger = new Logger();
         private readonly HttpClient _client;
 
-        public OpenWeatherMapParser(Logger logger, HttpClient client, string apiUrl, string apiKey)
+        private readonly string _apiKey;
+        private readonly string _apiUrl;
+
+        public NewOpenWeatherMapParser(Logger logger, HttpClient client, string apiUrl, string apiKey)
         {
             _logger = logger;
             _apiUrl = apiUrl;
@@ -49,9 +49,15 @@ namespace WeatherParser.Services
 
             cancellationToken.ThrowIfCancellationRequested();
 
-            var parsedResponse = JsonConvert.DeserializeObject<OpenWeatherMapResponse>(responseJson);
+            dynamic parsedResponse = JsonConvert.DeserializeObject<ExpandoObject>(responseJson);
+            var last = parsedResponse.list.Count > 0 ? parsedResponse.list[parsedResponse.list.Count - 1] : null;
+            if (last == null)
+                return null;
 
-            return MapResponseToWeatherResult(parsedResponse);
+            var lastWeather = (last.weather?.Count ?? 0) >= 1 ? last.weather[0] : null;
+            return new WeatherResult((string)lastWeather?.main, (string)lastWeather?.description,
+                (int)Math.Round(UnitsConverter.ConvertTemperatureKelvinToCelsius((double)(last.main?.temp ?? 0M)), 0),
+                (int?)last.main?.pressure ?? 0);
         }
 
         private string GetApiRequestUrl(string cityName)
@@ -62,16 +68,6 @@ namespace WeatherParser.Services
             query["q"] = cityName;
             builder.Query = query.ToString();
             return builder.ToString();
-        }
-
-        private WeatherResult MapResponseToWeatherResult(OpenWeatherMapResponse response)
-        {
-            return response == null ? null : new WeatherResult(
-                response.WeatherDescription?.FirstOrDefault()?.Title,
-                response.WeatherDescription?.FirstOrDefault()?.FullDescription,
-                (int)Math.Round(UnitsConverter.ConvertTemperatureKelvinToCelsius((double)(response.WeatherGeneralInformation?.Temperature ?? 0M)), 0),
-                response.WeatherGeneralInformation?.Pressure ?? 0
-            );
         }
     }
 }

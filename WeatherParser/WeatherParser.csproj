@@ -55,6 +55,7 @@
     <Compile Include="Models\OpenWeatherMapResponse.cs" />
     <Compile Include="Models\WeatherResult.cs" />
     <Compile Include="Services\IWeatherParser.cs" />
+    <Compile Include="Services\NewOpenWeatherMapParser.cs" />
     <Compile Include="Services\OpenWeatherMapParser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
