@@ -36,31 +36,22 @@ namespace WeatherParser.Services
 
             cancellationToken.ThrowIfCancellationRequested();
 
-            try
-            {
-                string apiRequestUrl = GetApiRequestUrl(cityName);
+            string apiRequestUrl = GetApiRequestUrl(cityName);
 
-                _logger.WriteLog("Begin request to OpenWeatherMap Api");
-                var httpResponse = await _client.GetAsync(apiRequestUrl, cancellationToken);
-                _logger.WriteLog($"Response from OpenWeatherMap Api received. Http Code: {httpResponse?.StatusCode}");
+            _logger.WriteLog("Begin request to OpenWeatherMap Api");
+            var httpResponse = await _client.GetAsync(apiRequestUrl, cancellationToken);
+            _logger.WriteLog($"Response from OpenWeatherMap Api received. Http Code: {httpResponse?.StatusCode}");
 
-                cancellationToken.ThrowIfCancellationRequested();
+            cancellationToken.ThrowIfCancellationRequested();
 
-                var responseJson = await httpResponse.Content.ReadAsStringAsync();
-                _logger.WriteLog($"Response from OpenWeatherMap: {responseJson}");
+            var responseJson = await httpResponse.Content.ReadAsStringAsync();
+            _logger.WriteLog($"Response from OpenWeatherMap: {responseJson}");
 
-                cancellationToken.ThrowIfCancellationRequested();
+            cancellationToken.ThrowIfCancellationRequested();
 
-                var parsedResponse = JsonConvert.DeserializeObject<OpenWeatherMapResponse>(responseJson);
+            var parsedResponse = JsonConvert.DeserializeObject<OpenWeatherMapResponse>(responseJson);
 
-                return MapResponseToWeatherResult(parsedResponse);
-            }
-            catch (Exception e) when (!(e is OperationCanceledException))
-            {
-                _logger.WriteExceptionLog(e);
-            }
-
-            return null;
+            return MapResponseToWeatherResult(parsedResponse);
         }
 
         private string GetApiRequestUrl(string cityName)

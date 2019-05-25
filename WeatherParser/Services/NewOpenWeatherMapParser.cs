@@ -15,6 +15,7 @@ namespace WeatherParser.Services
     {
         private readonly Logger _logger = new Logger();
         private readonly HttpClient _client;
+
         private readonly string _apiKey;
         private readonly string _apiUrl;
 
@@ -35,37 +36,28 @@ namespace WeatherParser.Services
 
             cancellationToken.ThrowIfCancellationRequested();
 
-            try
-            {
-                string apiRequestUrl = GetApiRequestUrl(cityName);
+            string apiRequestUrl = GetApiRequestUrl(cityName);
 
-                _logger.WriteLog("Begin request to OpenWeatherMap Api");
-                var httpResponse = await _client.GetAsync(apiRequestUrl, cancellationToken);
-                _logger.WriteLog($"Response from OpenWeatherMap Api received. Http Code: {httpResponse?.StatusCode}");
+            _logger.WriteLog("Begin request to OpenWeatherMap Api");
+            var httpResponse = await _client.GetAsync(apiRequestUrl, cancellationToken);
+            _logger.WriteLog($"Response from OpenWeatherMap Api received. Http Code: {httpResponse?.StatusCode}");
 
-                cancellationToken.ThrowIfCancellationRequested();
+            cancellationToken.ThrowIfCancellationRequested();
 
-                var responseJson = await httpResponse.Content.ReadAsStringAsync();
-                _logger.WriteLog($"Response from OpenWeatherMap: {responseJson}");
+            var responseJson = await httpResponse.Content.ReadAsStringAsync();
+            _logger.WriteLog($"Response from OpenWeatherMap: {responseJson}");
 
-                cancellationToken.ThrowIfCancellationRequested();
+            cancellationToken.ThrowIfCancellationRequested();
 
-                dynamic parsedResponse = JsonConvert.DeserializeObject<ExpandoObject>(responseJson);
-                var last = parsedResponse.list.Count > 0 ? parsedResponse.list[parsedResponse.list.Count - 1] : null;
-                if (last == null)
-                    return null;
+            dynamic parsedResponse = JsonConvert.DeserializeObject<ExpandoObject>(responseJson);
+            var last = parsedResponse.list.Count > 0 ? parsedResponse.list[parsedResponse.list.Count - 1] : null;
+            if (last == null)
+                return null;
 
-                var lastWeather = (last.weather?.Count ?? 0) >= 1 ? last.weather[0] : null;
-                return new WeatherResult((string)lastWeather?.main, (string)lastWeather?.description,
-                    (int)Math.Round(UnitsConverter.ConvertTemperatureKelvinToCelsius((double)(last.main?.temp ?? 0M)), 0),
-                    (int?)last.main?.pressure ?? 0);
-            }
-            catch (Exception e) when (!(e is OperationCanceledException))
-            {
-                _logger.WriteExceptionLog(e);
-            }
-
-            return null;
+            var lastWeather = (last.weather?.Count ?? 0) >= 1 ? last.weather[0] : null;
+            return new WeatherResult((string)lastWeather?.main, (string)lastWeather?.description,
+                (int)Math.Round(UnitsConverter.ConvertTemperatureKelvinToCelsius((double)(last.main?.temp ?? 0M)), 0),
+                (int?)last.main?.pressure ?? 0);
         }
 
         private string GetApiRequestUrl(string cityName)
