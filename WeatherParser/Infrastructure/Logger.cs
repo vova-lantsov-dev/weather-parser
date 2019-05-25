@@ -22,8 +22,6 @@ namespace WeatherParser.Infrastructure
             {
                 // silent behavior is preferred
             }
-
-            Console.WriteLine(message);
         }
 
         public void WriteExceptionLog(Exception exception)
